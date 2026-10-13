@@ -1,0 +1,2 @@
+@model LoginModel
+<section class="account-box"><h1>Вход</h1><p>Влез в своя GenchoFit акаунт.</p><form method="post"><input type="hidden" asp-for="ReturnUrl" /><label>Email<input asp-for="Email" /></label><span asp-validation-for="Email"></span><label>Парола<input asp-for="Password" type="password" /></label><span asp-validation-for="Password"></span><div asp-validation-summary="All"></div><button class="buy">Вход</button></form><p>Нямаш акаунт? <a asp-action="Register">Регистрирай се</a></p></section>

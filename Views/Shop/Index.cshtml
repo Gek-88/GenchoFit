@@ -1,0 +1,7 @@
+@model IEnumerable<Product>
+<section class="hero"><div><p class="eyebrow">ДОБАВКИ ЗА ТРЕНИРОВКИ</p><h1>Тренирай. <span>Храни се.</span> Напредвай.</h1><p>Прости добавки, ясни цени и без излишни обещания.</p></div><div class="hero-emoji">💪</div></section><div class="hero-photo"><img src="~/images/genchofit-hero.png" alt="Добавки и фитнес оборудване" /></div>
+<div class="shop-head"><h2>Нашите продукти</h2><form method="get"><input name="search" value="@ViewBag.Search" placeholder="Търси продукт..." /><button>Търси</button></form></div>
+<div class="products">
+@foreach (var product in Model) { <article class="card"><div class="product-pic">@product.Emoji</div><small>@product.Category</small><h3>@product.Name</h3><p>@product.Description</p><div class="card-bottom"><strong>@product.Price.ToString("0.00") лв.</strong><a asp-action="Details" asp-route-id="@product.Id">Виж</a></div></article> }
+</div>
+<section id="about" class="about"><h2>За GenchoFit</h2><p>Малък български магазин за хора, които искат да тренират по-редовно. Консултирай се със специалист, ако имаш здравословен проблем или приемаш лекарства.</p></section>

@@ -1,0 +1,2 @@
+@model RegisterModel
+<section class="account-box"><h1>Създай акаунт</h1><p>Запази любимите си продукти и следи поръчките си.</p><form method="post"><label>Име<input asp-for="Name" /></label><span asp-validation-for="Name"></span><label>Email<input asp-for="Email" /></label><span asp-validation-for="Email"></span><label>Парола<input asp-for="Password" type="password" /></label><span asp-validation-for="Password"></span><button class="buy">Регистрация</button></form><p>Вече имаш акаунт? <a asp-action="Login">Влез тук</a></p></section>

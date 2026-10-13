@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>GenchoFit</title><link rel="stylesheet" href="~/css/site.css" /><link rel="stylesheet" href="~/css/extra.css" /></head>
+<body>
+<header><div class="wrap nav"><a class="logo" asp-controller="Shop" asp-action="Index">Gencho<span>Fit</span></a><nav><a asp-controller="Shop" asp-action="Index">Продукти</a><a href="#about">За нас</a>@if (User.Identity?.IsAuthenticated == true) { <a asp-controller="Account" asp-action="Profile">Профил</a> } else { <a asp-controller="Account" asp-action="Login">Вход</a> }<a class="cart" href="#">Количка (0)</a></nav></div></header>
+<main class="wrap">@RenderBody()</main>
+<footer><div class="wrap">© 2026 GenchoFit · Малък магазин за големи цели</div></footer>
+</body></html>

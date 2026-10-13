@@ -1,0 +1,2 @@
+@model Product
+<a class="back" asp-action="Index">← обратно към продуктите</a><section class="details"><div class="product-pic big">@Model.Emoji</div><div><small>@Model.Category</small><h1>@Model.Name</h1><p>@Model.Description</p><h2>@Model.Price.ToString("0.00") лв.</h2><button class="buy">Добави в количката</button><p class="note">* Демонстрационна количка – плащането не е свързано.</p></div></section>

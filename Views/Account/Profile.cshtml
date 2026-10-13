@@ -1,0 +1,2 @@
+@model User
+<section class="account-box"><p class="eyebrow">МОЯТ ПРОФИЛ</p><h1>Здравей, @Model.Name!</h1><p>Твоят email: <strong>@Model.Email</strong></p><p>Акаунтът е създаден на @Model.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy")</p><form method="post" asp-action="Logout"><button class="buy">Изход</button></form></section>
