@@ -7,6 +7,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => { options.LoginPath = "/Account/Login"; options.AccessDeniedPath = "/Account/Login"; });
 builder.Services.AddAuthorization();
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
+if (string.IsNullOrWhiteSpace(connection))
+{
+    throw new InvalidOperationException("ConnectionStrings:DefaultConnection is missing from appsettings.json.");
+}
 builder.Services.AddDbContext<ShopDbContext>(options =>
     options.UseMySql(connection, ServerVersion.AutoDetect(connection)));
 
