@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 using GenchoFit.Data;
 using GenchoFit.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -37,5 +38,3 @@ public class AccountController(ShopDbContext db) : Controller
     private async Task SignIn(User user) { var claims = new[] { new Claim(ClaimTypes.Name, user.Email), new Claim("display_name", user.Name) }; await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme))); }
     private static string Hash(string value) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
 }
-public class RegisterModel { [Required, StringLength(80)] public string Name { get; set; } = ""; [Required, EmailAddress] public string Email { get; set; } = ""; [Required, MinLength(6)] public string Password { get; set; } = ""; }
-public class LoginModel { [Required, EmailAddress] public string Email { get; set; } = ""; [Required] public string Password { get; set; } = ""; public string? ReturnUrl { get; set; } }
