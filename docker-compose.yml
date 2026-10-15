@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: genchofit-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: genchofit-local
+      MYSQL_DATABASE: genchofit
+    ports:
+      - "3306:3306"
+    volumes:
+      - genchofit_mysql:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pgenchofit-local"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  genchofit_mysql:
