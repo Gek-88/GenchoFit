@@ -1,0 +1,6 @@
+@model IEnumerable<GenchoFit.Controllers.CartLineViewModel>
+@{ var lines = Model.ToList(); }
+<section class="cart-page"><a class="back" asp-controller="Shop" asp-action="Index">← обратно към продуктите</a><h1>Твоята количка</h1>
+@if (lines.Count == 0) { <div class="empty-cart"><p>Количката е празна.</p><a class="primary-link" asp-controller="Shop" asp-action="Index">Разгледай продуктите</a></div> }
+else { <div class="cart-list">@foreach (var line in lines) { <article class="cart-row"><img src="~/images/products/product-@line.Product.Id.svg" alt="@line.Product.Name" /><div><small>@line.Product.Category</small><h3>@line.Product.Name</h3><p>@line.Quantity × @line.Product.Price.ToString("0.00") лв.</p></div><strong>@line.Total.ToString("0.00") лв.</strong><form asp-action="Remove" method="post"><input type="hidden" name="id" value="@line.Product.Id" /><button class="remove" type="submit">Премахни</button></form></article>}</div><div class="cart-total"><span>Общо</span><strong>@lines.Sum(x => x.Total).ToString("0.00") лв.</strong></div><p class="note">Демонстрационна количка — плащането не е свързано.</p> }
+</section>
